@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import * as api from '../utils/api'
 import Loading from '../components/loading'
 

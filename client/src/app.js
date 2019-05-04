@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import User from './components/user'
 import Login from './components/login'
@@ -146,7 +146,7 @@ function App() {
                   <div>
                     <Title>
                       <Link to="/">
-                        Today<br />
+                        Today 3<br />
                         <SecondaryTitle>I Learned</SecondaryTitle>
                       </Link>
                     </Title>

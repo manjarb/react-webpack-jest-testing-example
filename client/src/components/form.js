@@ -1,6 +1,6 @@
 import React from 'react'
 import {css as emoCSS} from 'emotion'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 
 const css = (...args) => ({className: emoCSS(...args)})
 
