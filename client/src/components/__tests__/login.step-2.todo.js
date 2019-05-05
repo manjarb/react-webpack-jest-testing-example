@@ -2,7 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // 🐨 you'll need these:
-// import {generate} from 'til-client-test-utils'
+import {generate} from 'til-client-test-utils'
 // import {render, fireEvent} from 'react-testing-library'
 
 // note that til-client-test-utils is found in `client/test/til-client-test-utils`
