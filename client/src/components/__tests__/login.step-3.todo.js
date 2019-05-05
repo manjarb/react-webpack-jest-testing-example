@@ -23,11 +23,13 @@ test('calls onSubmit with the username and password when submitted', () => {
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)
   expect(handleSubmit).toHaveBeenCalledWith(fakeUser)
+
 })
 
 test('snapshot', () => {
   // render the login, this will give you back an object with a `container` property
   // expect the `container` property to match a snapshot
+    console.log(document.body.innerHTML);
 })
 
 //////// Elaboration & Feedback /////////
