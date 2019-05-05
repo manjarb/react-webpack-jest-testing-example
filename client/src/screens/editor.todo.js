@@ -14,6 +14,7 @@ class Editor extends Component {
       date: new Date().toISOString(),
       authorId: this.props.user.id,
     }
+
     api.posts.create(newPost).then(() => {
       this.props.history.push('/')
     })
