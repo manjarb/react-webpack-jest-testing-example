@@ -7,7 +7,7 @@ test('calls onSubmit with the username and password when submitted', () => {
   ReactDom.render(<Editor/>, container)
   const form = container.querySelector('form')
   const {title, content, tags} = form.elements
-  console.log(title, 'title 3peus4u eeiueeueeuuueeeueeee eue')
+  console.log(title, 'title 3peus4u eeiueeueeuuueeeueeee eueeeeeue3')
   console.log(content, 'content')
   // Arrange
   // create a fake user, post, history, and api
