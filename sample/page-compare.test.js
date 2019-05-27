@@ -1,10 +1,12 @@
 import React from 'react';
-import { fireEvent } from 'react-testing-library';
-import mockAxios from 'jest-mock-axios';
+import { fireEvent, wait } from 'react-testing-library';
+import mockAxios from 'axios';
 
 import { reduxRender } from '../../testing/utils';
 import { portalObjectData, xmlList } from '../../testing/mockData';
 import PagesCompare from './pages-compare';
+
+jest.mock('axios');
 
 describe('<PagesCompare>', () => {
   let testId;
@@ -18,10 +20,12 @@ describe('<PagesCompare>', () => {
 
   afterEach(() => {
     // cleaning up the mess left behind the previous test
-    mockAxios.reset();
+    mockAxios.mockClear();
   });
 
   beforeEach(() => {
+    mockAxios.mockResolvedValue({ data: xmlList });
+
     const {
       getByTestId, getByText, rerender, debug,
     } = reduxRender(
@@ -63,14 +67,21 @@ describe('<PagesCompare>', () => {
     expect(testId('portal-management-content')).toBeInTheDocument();
   });
 
-  test('Get Modify Portal button works correctly', () => {
-    mockAxios.mockResponse({ data: { ...xmlList } });
+  test('Get Modify Portal button works correctly', async () => {
     expect(mockAxios).toHaveBeenCalledTimes(1);
-    fireEvent.click(testId('modify-portal-link'));
-    mockAxios.reset();
-    fireEvent.click(testText(/Get Modify Portal/i));
-    mockAxios.mockResponse({ data: { ...portalObjectData } });
-    expect(mockAxios).toHaveBeenCalledTimes(2);
-    expect(testId('modify-page-content-box')).toBeInTheDocument();
+    await wait(() => {
+      mockAxios.mockResolvedValue({ data: { ...portalObjectData } });
+      fireEvent.click(testId('modify-portal-link'));
+      fireEvent.click(testText(/Get Modify Portal/i));
+    })
+
+    await wait(() => {
+      expect(mockAxios).toHaveBeenCalledTimes(2);
+      expect(testId('modify-page-content-box')).toBeInTheDocument();
+    });
+  });
+  
+  test('Snapshot matched', () => {
+    expect(testId('page-compare-screen')).toMatchSnapshot();
   });
 });
