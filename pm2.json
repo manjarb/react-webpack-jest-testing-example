@@ -1,0 +1,20 @@
+{
+  "apps": [{
+    "name": "hsbc-portal-compare",
+    "script": "./index.js",
+    "interpreter": "./node_modules/@babel/node/bin/babel-node.js",
+    "instances": "1",
+    "log_date_format": "YYYY-MM-DD HH:mm Z",
+    "max_memory_restart": "150M",
+    "env_testing": {
+      "NODE_ENV": "testing",
+      "PORT": 8500,
+      "CONFIG_FILE": "./config/env.json"
+    },
+    "env_prod": {
+      "NODE_ENV": "production",
+      "PORT": 5000,
+      "CONFIG_FILE": "./config/env.json"
+    }
+  }]
+}
